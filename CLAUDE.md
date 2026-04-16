@@ -1,7 +1,7 @@
 # Firewalla MCP Server
 
-Building a Model Context Protocol server that lets Claude query and (optionally)
-control a Firewalla box via the Firewalla MSP API.
+Building a read-only Model Context Protocol server that lets Claude query and
+audit a Firewalla box via the Firewalla MSP API.
 
 ## How to work on this project
 
