@@ -1,0 +1,50 @@
+language: en
+
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+
+  path_filters:
+    - "src/**"
+    - "package.json"
+    - "tsconfig.json"
+    - "CLAUDE.md"
+    - "README.md"
+    - ".github/**"
+
+  path_instructions:
+    - path: "src/tools/**/*.ts"
+      instructions: |
+        MCP tool implementations for a read-only Firewalla security audit server.
+        Review for: correct readOnlyHint annotation, no mutation operations,
+        Zod input schema completeness (descriptions, constraints), actionable
+        error messages that guide the LLM to recover, proper use of
+        response_format (json vs markdown), and no secrets or PII in
+        tool descriptions.
+
+    - path: "src/firewalla-client.ts"
+      instructions: |
+        HTTP client for the Firewalla MSP API. Review for: no leaked credentials,
+        proper error mapping with actionable suggestions, timeout handling,
+        and that only GET requests are exposed (read-only server).
+
+    - path: "src/formatters.ts"
+      instructions: |
+        Response formatting utilities. Review for: CHARACTER_LIMIT enforcement,
+        proper markdown table escaping, no PII leakage in truncation messages,
+        and consistent formatting across json/markdown modes.
+
+    - path: "src/schemas.ts"
+      instructions: |
+        Shared Zod schemas for tool inputs. Review for: proper defaults,
+        clear .describe() strings, correct min/max constraints, and
+        consistency with the Firewalla MSP API documentation.
+
+    - path: ".github/workflows/**"
+      instructions: |
+        CI/CD workflows. Review for: pinned action versions, no secret
+        exposure in logs, proper caching, and that all checks are required
+        before merge.

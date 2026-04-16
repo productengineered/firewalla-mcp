@@ -1,0 +1,25 @@
+# trivy.yaml
+# Vulnerability scanning for Node.js/TypeScript project
+
+format: json
+
+severity:
+  - CRITICAL
+  - HIGH
+  - MEDIUM
+
+exit-code: 1
+
+ignore-unfixed: false
+
+timeout: 10m
+
+scan:
+  skip-dirs:
+    - node_modules
+    - dist
+    - .github
+
+vulnerability:
+  type:
+    - library

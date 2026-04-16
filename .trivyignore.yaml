@@ -1,0 +1,20 @@
+# .trivyignore.yaml
+# Accepted risks with rationale and expiration dates
+# Review expired entries monthly
+
+vulnerabilities:
+  # - id: CVE-2024-XXXXX
+  #   statement: "Not reachable in our code path - validated via manual review"
+  #   expired_at: 2026-06-01
+
+secrets:
+  # Ignore test fixtures with example keys
+  # - id: generic-api-key
+  #   paths:
+  #     - "tests/fixtures/*"
+
+licenses:
+  # Accept specific licenses for known dependencies
+  # - id: GPL-3.0
+  #   paths:
+  #     - "specific/path/only"
